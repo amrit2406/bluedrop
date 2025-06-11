@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Search, Calendar, User, Tag, ChevronRight, ArrowRight, Clock } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Calendar, Clock, ChevronRight, Droplet, BookOpen, PenTool } from 'lucide-react';
 
 interface BlogPost {
   id: number;
@@ -14,28 +14,17 @@ interface BlogPost {
     avatar: string;
   };
   image: string;
-  tags: string[];
+  icon: JSX.Element;
+  color: string;
 }
 
 const Blog = () => {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('All');
-
-  const categories = [
-    'All',
-    'Water Quality',
-    'Health',
-    'Technology',
-    'Sustainability',
-    'Maintenance'
-  ];
-
   const blogPosts: BlogPost[] = [
     {
       id: 1,
-      title: "The Impact of Water Quality on Health",
-      excerpt: "Discover how water quality affects your daily health and well-being, from immune system function to cognitive performance.",
-      category: "Health",
+      title: "The Science Behind Pure Water",
+      excerpt: "Discover how advanced filtration technologies transform ordinary water into a health-enhancing resource.",
+      category: "Technology",
       date: "Aug 15, 2023",
       readTime: "5 min read",
       author: {
@@ -43,13 +32,14 @@ const Blog = () => {
         avatar: "/author-1.jpg"
       },
       image: "/blog-1.jpg",
-      tags: ["Health", "Water Quality", "Wellness"]
+      icon: <Droplet className="w-6 h-6" />,
+      color: "bg-blue-100 text-blue-600"
     },
     {
       id: 2,
-      title: "Advanced Water Filtration Technologies",
-      excerpt: "Explore the latest innovations in water purification technology and how they're shaping the future of clean water.",
-      category: "Technology",
+      title: "Hydration & Cognitive Performance",
+      excerpt: "Learn how proper hydration with clean water can boost your brain function and productivity.",
+      category: "Health",
       date: "Aug 12, 2023",
       readTime: "7 min read",
       author: {
@@ -57,222 +47,187 @@ const Blog = () => {
         avatar: "/author-2.jpg"
       },
       image: "/blog-2.jpg",
-      tags: ["Technology", "Innovation", "Filtration"]
+      icon: <BookOpen className="w-6 h-6" />,
+      color: "bg-emerald-100 text-emerald-600"
     },
     {
       id: 3,
-      title: "Sustainable Water Management at Home",
-      excerpt: "Learn practical tips for managing water consumption and reducing waste in your household.",
+      title: "Sustainable Water Solutions",
+      excerpt: "Explore eco-friendly water purification methods that protect our planet while delivering purity.",
       category: "Sustainability",
       date: "Aug 10, 2023",
-      readTime: "4 min read",
+      readTime: "6 min read",
       author: {
         name: "Emma Wilson",
         avatar: "/author-3.jpg"
       },
       image: "/blog-3.jpg",
-      tags: ["Sustainability", "Tips", "Conservation"]
-    },
-    {
-      id: 4,
-      title: "Water Purifier Maintenance Guide",
-      excerpt: "Essential maintenance tips to keep your water purifier running efficiently and effectively.",
-      category: "Maintenance",
-      date: "Aug 8, 2023",
-      readTime: "6 min read",
-      author: {
-        name: "James Miller",
-        avatar: "/author-4.jpg"
-      },
-      image: "/blog-4.jpg",
-      tags: ["Maintenance", "Guide", "Tips"]
-    },
-    {
-      id: 5,
-      title: "Understanding Water TDS Levels",
-      excerpt: "A comprehensive guide to Total Dissolved Solids (TDS) and their impact on water quality.",
-      category: "Water Quality",
-      date: "Aug 5, 2023",
-      readTime: "8 min read",
-      author: {
-        name: "Dr. Lisa Park",
-        avatar: "/author-5.jpg"
-      },
-      image: "/blog-5.jpg",
-      tags: ["Water Quality", "Education", "Science"]
-    },
-    {
-      id: 6,
-      title: "Choosing the Right Water Purifier",
-      excerpt: "Expert advice on selecting the perfect water purifier for your specific needs and requirements.",
-      category: "Technology",
-      date: "Aug 3, 2023",
-      readTime: "6 min read",
-      author: {
-        name: "Robert Brown",
-        avatar: "/author-6.jpg"
-      },
-      image: "/blog-6.jpg",
-      tags: ["Buying Guide", "Technology", "Tips"]
+      icon: <PenTool className="w-6 h-6" />,
+      color: "bg-amber-100 text-amber-600"
     }
   ];
 
-  const filteredPosts = blogPosts.filter(post => {
-    const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesCategory = selectedCategory === 'All' || post.category === selectedCategory;
-    return matchesSearch && matchesCategory;
-  });
-
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
       {/* Header Section */}
-      <section className="bg-[#0066CC] py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Our Blog
-          </h1>
-          <p className="text-white/90 max-w-2xl mx-auto">
-            Stay informed about water quality, health, and the latest in water purification technology.
-          </p>
+      <section className="relative bg-gradient-to-r from-blue-600 to-cyan-500 py-24 overflow-hidden">
+        {/* Water droplet decorations */}
+        <motion.div 
+          className="absolute top-20 left-20 w-16 h-16 rounded-full bg-white opacity-20"
+          animate={{
+            y: [0, -20, 0],
+            transition: { duration: 6, repeat: Infinity }
+          }}
+        />
+        <motion.div 
+          className="absolute bottom-1/4 right-20 w-24 h-24 rounded-full bg-cyan-300 opacity-15"
+          animate={{
+            y: [0, 20, 0],
+            transition: { duration: 8, repeat: Infinity, delay: 2 }
+          }}
+        />
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center justify-center mb-4"
+          >
+            <BookOpen className="w-8 h-8 text-white mr-2" />
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+              Water <span className="text-cyan-200">Wisdom</span>
+            </h1>
+          </motion.div>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+            className="text-white/90 max-w-2xl mx-auto text-lg"
+          >
+            Insights on water health, purification technology, and sustainable living from our experts.
+          </motion.p>
         </div>
       </section>
 
-      {/* Search and Filter Section */}
-      {/* <section className="py-8 bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="relative w-full md:w-96">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
-              <input
-                type="text"
-                placeholder="Search articles..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0066CC] focus:border-transparent outline-none"
-              />
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {categories.map((category) => (
-                <button
-                  key={category}
-                  onClick={() => setSelectedCategory(category)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                    selectedCategory === category
-                      ? 'bg-[#0066CC] text-white'
-                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                  }`}
-                >
-                  {category}
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section> */}
-
-      {/* Featured Post */}
-      {/* <section className="py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link to={`/blog/${blogPosts[0].id}`} className="block">
-            <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-              <div className="md:flex">
-                <div className="md:w-1/2">
-                  <img
-                    src={blogPosts[0].image}
-                    alt={blogPosts[0].title}
-                    className="w-full h-64 md:h-full object-cover"
-                  />
-                </div>
-                <div className="md:w-1/2 p-8">
-                  <div className="flex items-center space-x-4 mb-4">
-                    <span className="bg-blue-100 text-[#0066CC] px-3 py-1 rounded-full text-sm">
-                      {blogPosts[0].category}
-                    </span>
-                    <div className="flex items-center text-gray-600 text-sm">
-                      <Clock size={16} className="mr-1" />
-                      {blogPosts[0].readTime}
-                    </div>
-                  </div>
-                  <h2 className="text-2xl font-bold text-[#1A365D] mb-4">
-                    {blogPosts[0].title}
-                  </h2>
-                  <p className="text-gray-600 mb-6">
-                    {blogPosts[0].excerpt}
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-3">
-                      <img
-                        src={blogPosts[0].author.avatar}
-                        alt={blogPosts[0].author.name}
-                        className="w-10 h-10 rounded-full"
-                      />
-                      <div>
-                        <p className="font-medium text-[#1A365D]">{blogPosts[0].author.name}</p>
-                        <p className="text-sm text-gray-600">{blogPosts[0].date}</p>
-                      </div>
-                    </div>
-                    <ArrowRight className="text-[#0066CC]" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Link>
-        </div>
-      </section> */}
-
       {/* Blog Grid */}
-      <section className="py-12">
+      <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredPosts.slice(1).map((post) => (
-              <Link key={post.id} to={`/blog/${post.id}`}>
-                <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                  <div className="relative h-48">
-                    <img
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
+          >
+            {blogPosts.map((post) => (
+              <motion.div
+                key={post.id}
+                whileHover={{ y: -10 }}
+                initial={{ opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+                className="group"
+              >
+                <div className="relative bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all overflow-hidden h-full flex flex-col">
+                  {/* Blog image */}
+                  <div className="relative h-48 overflow-hidden">
+                    <motion.img
                       src={post.image}
                       alt={post.title}
                       className="w-full h-full object-cover"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.3 }}
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
                     <div className="absolute top-4 left-4">
-                      <span className="bg-white/90 backdrop-blur-sm text-[#0066CC] px-3 py-1 rounded-full text-sm">
+                      <span className={`${post.color} px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm bg-opacity-80`}>
                         {post.category}
                       </span>
                     </div>
                   </div>
-                  <div className="p-6">
-                    <div className="flex items-center space-x-4 mb-4">
-                      <div className="flex items-center text-gray-600 text-sm">
-                        <Calendar size={16} className="mr-1" />
-                        {post.date}
+                  
+                  {/* Blog content */}
+                  <div className="p-6 flex-grow flex flex-col">
+                    <div className="flex items-center mb-4">
+                      <div className={`w-10 h-10 rounded-full ${post.color} flex items-center justify-center mr-3`}>
+                        {post.icon}
                       </div>
-                      <div className="flex items-center text-gray-600 text-sm">
-                        <Clock size={16} className="mr-1" />
-                        {post.readTime}
-                      </div>
+                      <h3 className="text-xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors">
+                        {post.title}
+                      </h3>
                     </div>
-                    <h3 className="text-xl font-bold text-[#1A365D] mb-2">
-                      {post.title}
-                    </h3>
-                    <p className="text-gray-600 mb-4 line-clamp-2">
+                    
+                    <p className="text-gray-600 mb-6 line-clamp-3">
                       {post.excerpt}
                     </p>
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-3">
-                        <img
-                          src={post.author.avatar}
-                          alt={post.author.name}
-                          className="w-8 h-8 rounded-full"
-                        />
-                        <span className="text-sm text-gray-600">{post.author.name}</span>
+                    
+                    {/* Meta info */}
+                    <div className="mt-auto">
+                      <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
+                        <div className="flex items-center">
+                          <Calendar className="w-4 h-4 mr-1" />
+                          {post.date}
+                        </div>
+                        <div className="flex items-center">
+                          <Clock className="w-4 h-4 mr-1" />
+                          {post.readTime}
+                        </div>
                       </div>
-                      <ChevronRight className="text-[#0066CC]" />
+                      
+                      <div className="flex items-center justify-between border-t border-gray-100 pt-4">
+                        <div className="flex items-center">
+                          <img
+                            src={post.author.avatar}
+                            alt={post.author.name}
+                            className="w-8 h-8 rounded-full mr-3"
+                          />
+                          <span className="text-sm font-medium text-gray-700">{post.author.name}</span>
+                        </div>
+                        <motion.div
+                          whileHover={{ x: 5 }}
+                          className="text-blue-500"
+                        >
+                          <ChevronRight className="w-5 h-5" />
+                        </motion.div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </Link>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-r from-blue-50 to-cyan-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-cyan-500 mb-4">
+              Want More Water Insights?
+            </h2>
+            <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
+              Subscribe to our newsletter for the latest articles and water health tips.
+            </p>
+            <motion.button
+              whileHover={{ 
+                scale: 1.05,
+                boxShadow: "0 10px 25px rgba(0, 103, 204, 0.3)"
+              }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-8 py-4 rounded-full shadow-lg flex items-center mx-auto"
+            >
+              Subscribe Now
+              <ChevronRight className="w-5 h-5 ml-2" />
+            </motion.button>
+          </motion.div>
         </div>
       </section>
     </div>

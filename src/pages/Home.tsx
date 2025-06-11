@@ -28,66 +28,10 @@ import HeroSection from "../components/Hero";
 import ProductsSection from "../components/ProductSec";
 import AboutUsSection from "../components/AboutUs";
 import FilP from "../components/Fp";
+import CTA from "../components/Cta";
 
 const Home = () => {
   const [hoveredStep, setHoveredStep] = useState<number | null>(null);
-
-  const filtrationSteps = [
-    {
-      step: "1",
-      title: "Pre-Filtration",
-      description: "Removes large particles, sediment, and visible impurities",
-      icon: <Filter className="w-8 h-8" />,
-      color: "bg-blue-100",
-      hoverColor: "hover:bg-blue-200",
-      border: " border border-gray-200 hover:border-blue-500",
-    },
-    {
-      step: "2",
-      title: "Carbon Filtration",
-      description: "Eliminates chlorine, bad taste, and odors",
-      icon: <Beaker className="w-8 h-8" />,
-      color: "bg-green-100",
-      hoverColor: "hover:bg-green-200",
-      border: " border border-gray-200 hover:border-green-500",
-    },
-    {
-      step: "3",
-      title: "RO Membrane",
-      description: "Removes dissolved solids and impurities",
-      icon: <Settings className="w-8 h-8" />,
-      color: "bg-purple-100",
-      hoverColor: "hover:bg-purple-200",
-      border: " border border-gray-200 hover:border-purple-500",
-    },
-    {
-      step: "4",
-      title: "UV Purification",
-      description: "Eliminates bacteria and other microorganisms",
-      icon: <Zap className="w-8 h-8" />,
-      color: "bg-yellow-100",
-      hoverColor: "hover:bg-yellow-200",
-      border: " border border-gray-200 hover:border-yellow-500",
-    },
-    {
-      step: "5",
-      title: "Mineral Addition",
-      description: "Adds essential minerals for healthy water",
-      icon: <TestTube className="w-8 h-8" />,
-      color: "bg-pink-100",
-      hoverColor: "hover:bg-pink-200",
-      border: " border border-gray-200 hover:border-pink-500",
-    },
-    {
-      step: "6",
-      title: "Final Polish",
-      description: "Ensures fresh, great-tasting water",
-      icon: <Sparkles className="w-8 h-8" />,
-      color: "bg-indigo-100",
-      hoverColor: "hover:bg-indigo-200",
-      border: " border border-gray-200 hover:border-indigo-500",
-    },
-  ];
 
   return (
     <div className="min-h-screen">
@@ -173,20 +117,7 @@ const Home = () => {
       <LatestBlogs />
 
       {/* CTA Section */}
-      <section className="py-10 bg-[#5495f0]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Ready to Experience Pure Water?
-          </h2>
-          <p className="text-white/90 max-w-2xl mx-auto mb-8">
-            Join thousands of satisfied customers who have chosen Blue Drop for
-            their water purification needs.
-          </p>
-          <button className="bg-white text-[#0066CC] px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">
-            Get Started Today
-          </button>
-        </div>
-      </section>
+      <CTA />
     </div>
   );
 };

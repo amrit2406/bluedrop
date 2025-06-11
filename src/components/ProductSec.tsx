@@ -12,8 +12,8 @@ const products = [
     id: 1,
     name: "BlueDrop Water Purifier",
     description: "Advanced 6-stage filtration for pure, clean drinking water",
-    image: "/products/purifier1.jpg",
-    price: "$299",
+    image: "/wf.png",
+    price: "₹299",
     features: ["Smart monitoring", "Mineral retention", "Eco-friendly"],
     icon: <Droplet className="w-5 h-5" />
   },
@@ -21,8 +21,8 @@ const products = [
     id: 2,
     name: "Smart Faucet Filter",
     description: "Easy to install, smart water filtration for your kitchen",
-    image: "/products/faucet-filter.jpg",
-    price: "$99",
+    image: "/1.webp",
+    price: "₹99",
     features: ["One-click install", "Real-time alerts", "Compact design"],
     icon: <Zap className="w-5 h-5" />
   },
@@ -30,8 +30,8 @@ const products = [
     id: 3,
     name: "Mineral Enhancer",
     description: "Adds essential minerals back to your purified water",
-    image: "/products/mineral-cartridge.jpg",
-    price: "$49",
+    image: "/2.webp",
+    price: "₹49",
     features: ["Calcium", "Magnesium", "Potassium"],
     icon: <Shield className="w-5 h-5" />
   },
@@ -39,8 +39,8 @@ const products = [
     id: 4,
     name: "Portable Water Bottle",
     description: "Stay hydrated with our durable filtered water bottle",
-    image: "/products/portable-bottle.jpg",
-    price: "$39",
+    image: "/3.jpg",
+    price: "₹39",
     features: ["3-stage filter", "BPA-free", "Leak-proof"],
     icon: <Droplet className="w-5 h-5" />
   },
@@ -48,8 +48,8 @@ const products = [
     id: 5,
     name: "Commercial Filter",
     description: "High capacity filtration for business needs",
-    image: "/products/commercial-filter.jpg",
-    price: "$499",
+    image: "/4.jpg",
+    price: "₹499",
     features: ["Heavy-duty", "Long lifespan", "Easy maintenance"],
     icon: <Zap className="w-5 h-5" />
   },
@@ -57,7 +57,7 @@ const products = [
 
 const ProductsSection = () => {
   return (
-    <section className="py-20 bg-gradient-to-b from-blue-50 to-white relative overflow-hidden">
+    <section className="py-10 bg-gradient-to-b from-blue-50 to-white relative overflow-hidden">
       {/* Floating decorative elements */}
       <motion.div 
         className="absolute top-20 left-10 w-24 h-24 rounded-full bg-blue-200 opacity-10 blur-xl"
@@ -120,7 +120,7 @@ const ProductsSection = () => {
             slidesPerView={1}
             loop={true}
             autoplay={{ 
-              delay: 4000, 
+              delay: 2500, 
               disableOnInteraction: false,
               pauseOnMouseEnter: true
             }}
@@ -146,11 +146,12 @@ const ProductsSection = () => {
                     <motion.img
                       src={product.image}
                       alt={product.name}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-contain"
                       whileHover={{ scale: 1.05 }}
                       transition={{ duration: 0.3 }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                    <div className="absolute inset-0" />
+                    {/* <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" /> */}
                   </div>
 
                   {/* Product content */}

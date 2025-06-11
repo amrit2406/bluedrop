@@ -38,6 +38,6 @@
 
 .mySwiper .swiper-pagination {
   position: relative; /* or 'absolute' for floating effect */
-  bottom: -5px;       /* push it down more or less */
+  bottom: -25px;       /* push it down more or less */
   text-align: center;
 }

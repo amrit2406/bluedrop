@@ -42,7 +42,7 @@ const AboutUsSection = () => {
   ];
 
   return (
-    <section className="relative overflow-hidden py-24 text-gray-900 bg-gradient-to-br from-blue-50 to-white">
+    <section className="relative overflow-hidden py-10 text-gray-900 bg-gradient-to-br from-blue-50 to-white">
       {/* Floating decorative elements */}
       <motion.div
         className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-200 opacity-10 rounded-full blur-3xl"
