@@ -65,7 +65,7 @@ const testimonials = [
 
 const Testimonials = () => {
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-blue-50 relative overflow-hidden">
+    <section className="py-10 bg-gradient-to-b from-white to-blue-50 relative overflow-hidden">
       {/* Floating water droplets decoration */}
       <motion.div
         className="absolute top-20 left-10 w-8 h-8 rounded-full bg-blue-200 opacity-20"
@@ -84,6 +84,30 @@ const Testimonials = () => {
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        {/* Custom pagination indicator (additional to swiper pagination) */}
+        <motion.div
+          className="hidden md:flex justify-center gap-2 mb-4"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+        >
+          {[...Array(6)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="w-2 h-2 rounded-full bg-blue-600"
+              animate={{
+                scale: [1, 1.3, 1],
+                opacity: [0.6, 1, 0.6],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                delay: i * 0.2,
+              }}
+            />
+          ))}
+        </motion.div>
         {/* Animated Heading */}
         <motion.div
           className="text-center mb-16"
@@ -229,29 +253,6 @@ const Testimonials = () => {
           </Swiper>
         </motion.div>
 
-        {/* Custom pagination indicator (additional to swiper pagination) */}
-        <motion.div
-          className="hidden md:flex justify-center gap-2 mt-8"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-        >
-          {[...Array(6)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="w-2 h-2 rounded-full bg-blue-200"
-              animate={{
-                scale: [1, 1.3, 1],
-                opacity: [0.6, 1, 0.6],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                delay: i * 0.2,
-              }}
-            />
-          ))}
-        </motion.div>
       </div>
     </section>
   );

@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import {
   Users,
   Target,
@@ -270,17 +271,19 @@ const About = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            <motion.button
-              whileHover={{
-                scale: 1.05,
-                boxShadow: "0 10px 25px rgba(255, 255, 255, 0.2)",
-              }}
-              whileTap={{ scale: 0.98 }}
-              className="bg-white text-blue-600 px-8 py-4 rounded-full font-semibold shadow-lg flex items-center mx-auto group"
-            >
-              Contact Our Team
-              <ChevronRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-            </motion.button>
+            <Link to="/contact">
+              <motion.button
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: "0 10px 25px rgba(255, 255, 255, 0.2)",
+                }}
+                whileTap={{ scale: 0.98 }}
+                className="bg-white text-blue-600 px-8 py-4 rounded-full font-semibold shadow-lg flex items-center mx-auto group"
+              >
+                Contact Our Team
+                <ChevronRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+              </motion.button>
+            </Link>
           </motion.div>
         </div>
       </section>

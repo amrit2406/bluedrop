@@ -70,7 +70,7 @@ const Navbar = () => {
               whileHover={{ x: 2 }}
             >
               <Phone size={14} className="text-blue-600" />
-              <span>+91 98765 43210</span>
+              <span>+91 9337073434</span>
             </motion.div>
             <motion.div 
               className="flex items-center gap-1 hover:text-blue-600 transition-colors"
@@ -121,7 +121,7 @@ const Navbar = () => {
           <div className="flex justify-between items-center h-20">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2">
-              <img src="/bd-logo2.png" alt="Blue Drop Logo" className="w-[100px] h-[50px] sm:w-[120px] sm:h-[60px] md:w-[150px] md:h-[75px]" />
+              <img src="/bd1.svg" alt="Blue Drop Logo" className="w-[100px] h-[50px] sm:w-[120px] sm:h-[60px] md:w-[150px] md:h-[75px]" />
             </Link>
 
             {/* Desktop Navigation */}

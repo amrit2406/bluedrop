@@ -7,7 +7,7 @@ const blogData = [
   {
     title: 'Importance of Clean Water',
     description: 'Learn why pure water is essential for your family’s health and how to ensure it.',
-    image: '/blog1.jpg',
+    image: '/b1.webp',
     icon: <Droplet className="w-6 h-6" />,
     color: 'bg-blue-100',
     accent: 'text-blue-600'
@@ -15,7 +15,7 @@ const blogData = [
   {
     title: 'Smart Filtration Tech',
     description: 'Explore how smart technology is changing the way we purify water at home.',
-    image: '/blog2.jpg',
+    image: '/b2.webp',
     icon: <PenTool className="w-6 h-6" />,
     color: 'bg-cyan-100',
     accent: 'text-cyan-600'
@@ -23,7 +23,7 @@ const blogData = [
   {
     title: 'Minerals & Health',
     description: 'Understand how essential minerals in water benefit your daily health and energy.',
-    image: '/blog3.jpg',
+    image: '/b3.webp',
     icon: <BookOpen className="w-6 h-6" />,
     color: 'bg-teal-100',
     accent: 'text-teal-600'
@@ -32,8 +32,7 @@ const blogData = [
 
 const LatestBlogs = () => {
   return (
-    <section className="py-20 bg-gradient-to-b from-blue-50 to-white relative overflow-hidden">
-      {/* Floating decorative elements */}
+    <section className="py-10 bg-gradient-to-b from-blue-50 to-white relative overflow-hidden">
       <motion.div 
         className="absolute top-20 left-10 w-16 h-16 rounded-full bg-blue-200 opacity-10 blur-xl"
         animate={{
@@ -50,7 +49,6 @@ const LatestBlogs = () => {
       />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Animated Heading */}
         <motion.div 
           className="text-center mb-16"
           initial={{ opacity: 0, y: 40 }}
@@ -100,7 +98,6 @@ const LatestBlogs = () => {
           </motion.p>
         </motion.div>
 
-        {/* Blog Cards with Enhanced Animations */}
         <motion.div 
           className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12"
           initial="hidden"
@@ -129,9 +126,10 @@ const LatestBlogs = () => {
                 whileHover="hover"
                 initial="rest"
               >
-                {/* Gradient background effect on hover */}
                 <motion.div 
-                  className={`absolute -inset-0.5 rounded-2xl ${blog.color.replace('100', '500')} opacity-0 blur-md group-hover:opacity-30 transition-all duration-300`}
+                  className={`absolute -inset-0.5 rounded-2xl ${
+                    index === 0 ? '' : blog.color.replace('100', '500')
+                  } opacity-0 blur-md group-hover:opacity-30 transition-all duration-300`}
                   variants={{
                     rest: { opacity: 0 },
                     hover: { opacity: 0.3 }
@@ -146,7 +144,6 @@ const LatestBlogs = () => {
                   }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
-                  {/* Image with overlay */}
                   <motion.div 
                     className="h-48 rounded-xl overflow-hidden mb-6 relative"
                     whileHover={{ scale: 1.03 }}
@@ -157,11 +154,12 @@ const LatestBlogs = () => {
                       className="w-full h-full object-cover"
                     />
                     <motion.div 
-                      className={`absolute inset-0 ${blog.color.replace('100', '500')} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}
+                      className={`absolute inset-0 ${
+                        index === 0 ? '' : blog.color.replace('100', '500')
+                      } opacity-0 group-hover:opacity-10 transition-opacity duration-300`}
                     />
                   </motion.div>
                   
-                  {/* Content */}
                   <motion.div
                     className="flex-grow"
                     initial={{ opacity: 0 }}
@@ -192,7 +190,6 @@ const LatestBlogs = () => {
                     </motion.div>
                   </motion.div>
                   
-                  {/* Decorative water droplet */}
                   <motion.div
                     className={`absolute bottom-4 right-4 ${blog.accent} opacity-20`}
                     animate={{
@@ -208,7 +205,6 @@ const LatestBlogs = () => {
           ))}
         </motion.div>
 
-        {/* View All CTA */}
         <motion.div 
           className="text-center mt-16"
           initial={{ opacity: 0 }}

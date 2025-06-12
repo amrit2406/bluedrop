@@ -1,6 +1,15 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Facebook, Twitter, Instagram, Mail, Phone, MapPin, Droplet, ChevronRight } from 'lucide-react';
+import React from "react";
+import { Link } from "react-router-dom";
+import {
+  Facebook,
+  Twitter,
+  Instagram,
+  Mail,
+  Phone,
+  MapPin,
+  Droplet,
+  ChevronRight,
+} from "lucide-react";
 
 const Footer = () => {
   return (
@@ -8,7 +17,7 @@ const Footer = () => {
       {/* Animated water droplets in background */}
       <div className="absolute inset-0 overflow-hidden opacity-40">
         {[...Array(20)].map((_, i) => (
-          <Droplet 
+          <Droplet
             key={i}
             size={Math.random() * 20 + 10}
             className="absolute animate-float"
@@ -16,7 +25,7 @@ const Footer = () => {
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
               animationDuration: `${Math.random() * 10 + 10}s`,
-              animationDelay: `${Math.random() * 5}s`
+              animationDelay: `${Math.random() * 5}s`,
             }}
           />
         ))}
@@ -28,7 +37,10 @@ const Footer = () => {
           <div>
             <div className="flex items-center mb-4">
               <div className="relative">
-                <Droplet className="h-8 w-8 text-blue-300 animate-pulse" fill="currentColor" />
+                <Droplet
+                  className="h-8 w-8 text-blue-300 animate-pulse"
+                  fill="currentColor"
+                />
                 <div className="absolute inset-0 bg-white rounded-full opacity-20 animate-ping"></div>
               </div>
               <span className="ml-2 text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-blue-100">
@@ -36,17 +48,18 @@ const Footer = () => {
               </span>
             </div>
             <p className="text-gray-300 mb-6 leading-relaxed">
-              Purifying your world, one drop at a time. Our advanced water solutions bring purity to your doorstep.
+              Purifying your world, one drop at a time. Our advanced water
+              solutions bring purity to your doorstep.
             </p>
             <div className="flex space-x-4">
               {[
-                { icon: Facebook, color: 'hover:text-blue-400' },
-                { icon: Twitter, color: 'hover:text-sky-400' },
-                { icon: Instagram, color: 'hover:text-pink-400' }
+                { icon: Facebook, color: "hover:text-blue-400" },
+                { icon: Twitter, color: "hover:text-sky-400" },
+                { icon: Instagram, color: "hover:text-pink-400" },
               ].map((social, i) => (
-                <a 
-                  key={i} 
-                  href="#" 
+                <a
+                  key={i}
+                  href="#"
                   className={`text-gray-300 ${social.color} transition-all transform hover:-translate-y-1`}
                 >
                   <social.icon size={20} />
@@ -61,13 +74,16 @@ const Footer = () => {
               Quick Links
             </h3>
             <ul className="space-y-3">
-              {['Products', 'About Us', 'Contact', 'Support'].map((link) => (
+              {["Products", "About Us", "Blog", "Contact"].map((link) => (
                 <li key={link} className="group">
-                  <Link 
-                    to={`/${link.toLowerCase().replace(' ', '-')}`} 
+                  <Link
+                    to={`/${link.toLowerCase().replace(" ", "-")}`}
                     className="flex items-center text-gray-300 hover:text-white transition-all group-hover:translate-x-1"
                   >
-                    <ChevronRight size={16} className="mr-1 opacity-0 group-hover:opacity-100 transition-all" />
+                    <ChevronRight
+                      size={16}
+                      className="mr-1 opacity-0 group-hover:opacity-100 transition-all"
+                    />
                     <span>{link}</span>
                   </Link>
                 </li>
@@ -82,17 +98,20 @@ const Footer = () => {
             </h3>
             <ul className="space-y-3">
               {[
-                { name: 'RO Purifiers', path: '/products/ro' },
-                { name: 'UV Purifiers', path: '/products/uv' },
-                { name: 'Commercial', path: '/products/commercial' },
-                { name: 'Smart Filters', path: '/products/smart' }
+                { name: "RO Purifiers", path: "/products" },
+                { name: "UV Purifiers", path: "/products" },
+                { name: "Commercial", path: "/products" },
+                { name: "Smart Filters", path: "/products" },
               ].map((product) => (
                 <li key={product.name} className="group">
-                  <Link 
-                    to={product.path} 
+                  <Link
+                    to={product.path}
                     className="flex items-center text-gray-300 hover:text-white transition-all group-hover:translate-x-1"
                   >
-                    <Droplet size={14} className="mr-2 text-blue-200 opacity-0 group-hover:opacity-100 transition-all" />
+                    <Droplet
+                      size={14}
+                      className="mr-2 text-blue-200 opacity-0 group-hover:opacity-100 transition-all"
+                    />
                     <span>{product.name}</span>
                   </Link>
                 </li>
@@ -113,7 +132,7 @@ const Footer = () => {
                 <div>
                   <p className="font-medium">Call Us</p>
                   <p className="text-gray-300 hover:text-white transition-colors cursor-pointer">
-                    +1 234 567 890
+                    +91 9337073434
                   </p>
                 </div>
               </li>
@@ -124,7 +143,7 @@ const Footer = () => {
                 <div>
                   <p className="font-medium">Email Us</p>
                   <p className="text-gray-300 hover:text-white transition-colors cursor-pointer">
-                    info@bluedrop.com
+                    bluedropsrosystems@gmail.com
                   </p>
                 </div>
               </li>
@@ -135,7 +154,8 @@ const Footer = () => {
                 <div>
                   <p className="font-medium">Visit Us</p>
                   <p className="text-gray-300">
-                    123 Water Street, Crystal City, ST 12345
+                    Plot No -500, Balisahi Road, Dhauli Bhubaneswar, Odisha,
+                    India
                   </p>
                 </div>
               </li>
@@ -163,13 +183,15 @@ const Footer = () => {
           </div>
         </div> */}
 
-        <div className="border-t border-blue-400/30 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-gray-300">
-          <p>&copy; {new Date().getFullYear()} Blue Drop. All rights reserved.</p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
+        <div className="border-t border-blue-400/30 mt-12 pt-8 flex flex-col md:flex-row justify-center items-center text-gray-300">
+          <p>
+            &copy; {new Date().getFullYear()} Blue Drop. All rights reserved.
+          </p>
+          {/* <div className="flex space-x-6 mt-4 md:mt-0">
             <Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
             <Link to="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
             <Link to="/sitemap" className="hover:text-white transition-colors">Sitemap</Link>
-          </div>
+          </div> */}
         </div>
       </div>
 

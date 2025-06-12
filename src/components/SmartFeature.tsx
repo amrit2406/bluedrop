@@ -59,7 +59,7 @@ const SmartFeatures = () => {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-blue-50 relative overflow-hidden">
+    <section className="py-10 bg-gradient-to-b from-white to-blue-50 relative overflow-hidden">
       {/* Tech pattern background (simplified) */}
       <div className="absolute inset-0 overflow-hidden opacity-5 bg-grid-blue-500/20"></div>
       

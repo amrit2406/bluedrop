@@ -78,7 +78,7 @@ const FilP = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-blue-50 to-white relative overflow-hidden">
+    <section className="py-10 bg-gradient-to-b from-blue-50 to-white relative overflow-hidden">
       {/* Water droplet decoration */}
       <motion.div 
         className="absolute top-0 left-1/4 w-32 h-32 rounded-full bg-blue-200 opacity-10 blur-xl"
